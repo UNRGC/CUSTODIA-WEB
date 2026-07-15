@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="../img/icon.png" />
+        <title>Custodia · Manual de referencia</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+        <style>
+:root {
+    --ink: #152238;
+    --ink-2: #1c2f4c;
+    --deep: #0f1c33;
+    --paper: #f6f9fb;
+    --paper-2: #eaf2f5;
+    --blue: #4a7fc7;
+    --blue-deep: #356ab0;
+    --teal: #63cdb9;
+    --teal-deep: #3aab97;
+    --line: rgba(21, 34, 56, 0.12);
+    --muted: #5b6b80;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: "Outfit", system-ui, sans-serif; line-height: 1.12; letter-spacing: -0.01em; }
+a { color: var(--teal-deep); }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+.eyebrow {
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+}
+
+/* ---------- Top bar ---------- */
+header.bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(246, 249, 251, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; align-items: center; gap: 18px; height: 60px; }
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Outfit";
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+}
+.brand svg { width: 26px; height: 26px; flex-shrink: 0; }
+.bar nav { margin-left: auto; display: flex; gap: 22px; }
+.bar nav a { font-size: 0.82rem; color: var(--muted); text-decoration: none; font-weight: 500; }
+.bar nav a:hover { color: var(--ink); }
+@media (max-width: 760px) { .bar nav { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero {
+    background: linear-gradient(160deg, var(--deep), var(--ink-2) 55%, #1a3a52 100%);
+    color: var(--paper);
+    padding: 84px 0 72px;
+    position: relative;
+    overflow: hidden;
+}
+.aura {
+    position: absolute;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, rgba(74, 127, 199, 0.35), transparent 60%), radial-gradient(circle at 65% 70%, rgba(99, 205, 185, 0.32), transparent 60%);
+    filter: blur(6px);
+}
+.hero .wrap { position: relative; z-index: 2; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; max-width: 18ch; margin: 16px 0 16px; }
+.hero h1 em {
+    font-style: normal;
+    font-weight: 800;
+    background: linear-gradient(100deg, var(--blue), var(--teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.hero p { max-width: 60ch; color: rgba(246, 249, 251, 0.78); font-size: 1.05rem; }
+.hero .meta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero .pill {
+    font-family: "Outfit";
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(246, 249, 251, 0.9);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 100px;
+    padding: 6px 14px;
+}
+
+/* ---------- Body layout ---------- */
+main { padding: 8px 0 24px; }
+.legal {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    padding: 56px 0;
+}
+@media (max-width: 820px) { .legal { grid-template-columns: 1fr; gap: 0; } }
+.toc { align-self: start; position: sticky; top: 84px; }
+@media (max-width: 820px) { .toc { display: none; } }
+.toc .k {
+    font-family: "Outfit";
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+    margin-bottom: 12px;
+}
+.toc a {
+    display: block;
+    font-size: 0.86rem;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 0 6px 12px;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+}
+.toc a:hover { color: var(--ink); border-left-color: var(--teal); }
+
+article section { padding: 0 0 34px; border: 0; scroll-margin-top: 84px; }
+article section + section { border-top: 1px solid var(--line); padding-top: 30px; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
+.sec-head .idx {
+    font-family: "Outfit";
+    font-weight: 700;
+    color: var(--teal-deep);
+    font-size: 0.8rem;
+    background: var(--paper-2);
+    border-radius: 100px;
+    padding: 3px 11px;
+    flex-shrink: 0;
+}
+article h2 { font-size: 1.35rem; font-weight: 700; }
+article h3 { font-size: 1.08rem; font-weight: 600; margin: 22px 0 8px; color: var(--ink-2); }
+article p { color: var(--ink); max-width: 66ch; margin: 10px 0; }
+article ul, article ol { max-width: 66ch; margin: 10px 0; padding-left: 22px; }
+article li { margin: 7px 0; color: var(--ink); }
+article li::marker { color: var(--teal-deep); }
+strong { font-weight: 700; color: var(--ink); }
+hr { display: none; }
+code {
+    background: var(--paper-2);
+    border-radius: 5px;
+    padding: 1px 6px;
+    font-size: 0.9em;
+    font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    color: var(--ink-2);
+}
+
+/* Tables — card styling to match the site */
+.table-wrap { overflow-x: auto; margin: 16px 0; max-width: 100%; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.92rem;
+}
+th, td { padding: 11px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+th {
+    background: var(--paper-2);
+    color: var(--blue-deep);
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+tr:last-child td { border-bottom: 0; }
+
+/* Blockquotes -> callouts */
+blockquote {
+    border-left: 3px solid var(--teal);
+    background: var(--paper-2);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 22px 0;
+    max-width: 66ch;
+}
+blockquote p { margin: 4px 0; }
+
+footer {
+    background: var(--deep);
+    color: rgba(246, 249, 251, 0.7);
+    padding: 44px 0;
+    text-align: center;
+}
+footer .brand { color: var(--paper); justify-content: center; }
+footer p { font-size: 0.85rem; margin-top: 8px; }
+
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ---------- Print (PDF) ---------- */
+@page { size: A4; margin: 16mm 14mm 18mm; }
+@media print {
+    body { background: #fff; }
+    header.bar { display: none; }
+    .aura { display: none; }
+    .hero { padding: 30px 0 26px; margin-bottom: 8px; -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+    .hero h1 { font-size: 2rem; margin: 10px 0; }
+    .toc { display: none; }
+    .legal { display: block; padding: 12px 0; }
+    .wrap { max-width: 100%; padding: 0 4mm; }
+    article section { break-inside: avoid; }
+    article h2, article h3 { break-after: avoid; }
+    table, blockquote, .table-wrap { break-inside: avoid; }
+    th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sec-head .idx, blockquote { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    a { color: var(--ink-2); }
+}
+</style>
+    </head>
+    <body>
+        <header class="bar">
+            <div class="wrap">
+                <div class="brand">
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M16 2.5 27 6v9c0 6.6-4.5 12.4-11 14.5C9.5 27.4 5 21.6 5 15V6l11-3.5Z" fill="url(#mg1)" />
+                        <rect x="10.5" y="14.5" width="11" height="8.5" rx="2" fill="url(#mg2)" />
+                        <path d="M12.7 14.5v-1.7a3.3 3.3 0 0 1 6.6 0v1.7" stroke="#fff" stroke-width="1.9" fill="none" stroke-linecap="round" />
+                        <circle cx="16" cy="18.4" r="1.5" fill="#0f1c33" />
+                        <defs>
+                            <linearGradient id="mg1" x1="27" y1="4" x2="6" y2="28" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#4D7FB2" /><stop offset="1" stop-color="#0B1D59" />
+                            </linearGradient>
+                            <linearGradient id="mg2" x1="10.5" y1="14.5" x2="20" y2="23" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#82DBD3" /><stop offset="1" stop-color="#2E65B8" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    Custodia
+                </div>
+                <nav>
+                    <a href="../index.html">Guía de usuario</a>
+                    <a href="#2-licencia">Licencia</a>
+                    <a href="#5-empresas">Empresas</a>
+                    <a href="#7-programacion-de-respaldos">Respaldos</a>
+                    <a href="#9-archivos-y-recuperacion">Recuperación</a>
+                    <a href="terms.html">Términos</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="hero">
+            <div class="aura"></div>
+            <div class="wrap">
+                <span class="eyebrow">Documentación · Custodia by Mercasoft</span>
+                <h1>Manual de <em>referencia</em></h1>
+                <p>
+                    Detalle de cada pantalla, campo y acción de Custodia. Consúltalo para conocer el
+                    comportamiento exacto de una opción, resolver un error o entender qué hace cada botón.
+                    Para una introducción paso a paso, revisa la <a href="../index.html" style="color:#9fe6d8">Guía de usuario</a>.
+                </p>
+                <div class="meta">
+                    <span class="pill">Versión del documento 1.0</span>
+                    <span class="pill">Actualizado el 11 de julio de 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div class="wrap legal">
+                <aside class="toc">
+                    <div class="k">Contenido</div>
+                    <a href="#1-conceptos-y-arquitectura">1. Conceptos y arquitectura</a>
+                    <a href="#2-licencia">2. Licencia</a>
+                    <a href="#3-configuracion">3. Configuración</a>
+                    <a href="#4-clave-de-cifrado">4. Clave de cifrado</a>
+                    <a href="#5-empresas">5. Empresas</a>
+                    <a href="#6-nube-onedrive">6. Nube (OneDrive)</a>
+                    <a href="#7-programacion-de-respaldos">7. Programación de respaldos</a>
+                    <a href="#8-avisos-por-correo">8. Avisos por correo</a>
+                    <a href="#9-archivos-y-recuperacion">9. Archivos y recuperación</a>
+                    <a href="#10-bitacora">10. Bitácora</a>
+                    <a href="#11-servicio-en-segundo-plano">11. Servicio en segundo plano</a>
+                    <a href="#12-estados-y-mensajes">12. Estados y mensajes</a>
+                    <a href="#13-solucion-de-problemas">13. Solución de problemas</a>
+                    <a href="#14-preguntas-frecuentes">14. Preguntas frecuentes</a>
+                    <a href="#15-glosario">15. Glosario</a>
+                </aside>
+
+                <article>
+                    <section id="1-conceptos-y-arquitectura">
+                        <div class="sec-head"><span class="idx">01</span><h2>Conceptos y arquitectura</h2></div>
+<p>Custodia se compone de dos partes que trabajan juntas:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Qué es</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Aplicación</strong></td>
+<td>La ventana que abres y usas</td>
+<td>Configurar, consultar y lanzar acciones.</td>
+</tr>
+<tr>
+<td><strong>Servicio en segundo plano</strong></td>
+<td>Un Servicio de Windows</td>
+<td>Ejecuta los respaldos programados aunque la ventana esté cerrada.</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>La <strong>aplicación</strong> se comunica con el <strong>servicio</strong> para validar la licencia, guardar la
+configuración y controlar los respaldos.</li>
+<li>El <strong>servicio</strong> debe estar <strong>Activo</strong> para que los respaldos automáticos se ejecuten.</li>
+<li>No es necesario mantener la ventana abierta, <strong>pero el equipo debe estar encendido</strong> a la hora
+programada.</li>
+</ul>
+<p><strong>Flujo de un respaldo:</strong> el servicio se conecta a tu servidor → genera la copia de cada empresa
+seleccionada → la <strong>cifra</strong> con tu clave → la guarda en las carpetas locales → sube una copia a la
+nube (si está conectada) → registra el resultado en la Bitácora → envía el aviso por correo.</p>
+<hr>
+                    </section>
+
+                    <section id="2-licencia">
+                        <div class="sec-head"><span class="idx">02</span><h2>Licencia</h2></div>
+<p>La licencia habilita el uso de Custodia. Mientras no haya una licencia válida y vigente, el resto
+de la aplicación permanece bloqueado.</p>
+<h3>Activar una licencia</h3>
+<ol>
+<li>Abre la sección <strong>Más información</strong>.</li>
+<li>Escribe el <strong>Número de serie</strong> que te entregaron.</li>
+<li>Presiona <strong>Validar</strong>.</li>
+<li>Aparecerá el diálogo de <strong>Términos y condiciones</strong>. Debes:<ul>
+<li>Abrir y leer los términos (enlace <strong>&quot;Leer términos y condiciones&quot;</strong>).</li>
+<li>Marcar la casilla <strong>&quot;He leído y acepto los términos y condiciones&quot;</strong>.</li>
+<li>Presionar <strong>Continuar</strong>. El botón permanece deshabilitado hasta que marques la casilla.</li>
+</ul>
+</li>
+<li>Si aceptas, Custodia valida la licencia contra el servidor y muestra el resultado.</li>
+</ol>
+<blockquote>
+<p>Si cancelas el diálogo o no aceptas los términos, <strong>la licencia no se activa</strong>.</p>
+</blockquote>
+<h3>Campos de licencia</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Número de serie</strong></td>
+<td>El identificador de tu licencia. Se bloquea mientras la licencia esté vigente.</td>
+</tr>
+<tr>
+<td><strong>Propietario</strong></td>
+<td>Nombre a quien está registrada la licencia.</td>
+</tr>
+<tr>
+<td><strong>Vigencia</strong></td>
+<td>Rango de fechas en que la licencia es válida (Desde / Hasta).</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Estado actual: Válida, Activa, Revocada, Expirada, Suspendida, etc.</td>
+</tr>
+</tbody></table></div>
+<h3>Quitar licencia</h3>
+<p>Usa <strong>Quitar licencia</strong> para <strong>liberar la activación de este equipo</strong> y poder usar la licencia en
+otra computadora.</p>
+<ul>
+<li>Libera la activación en el servidor y borra la licencia local.</li>
+<li>La aplicación vuelve a quedar <strong>bloqueada</strong> hasta validar una licencia de nuevo.</li>
+<li>Si la liberación falla en el servidor, la licencia <strong>no</strong> se borra localmente (para no dejar la
+activación huérfana).</li>
+</ul>
+<blockquote>
+<p><strong>Límite de activaciones:</strong> si al validar aparece &quot;Se alcanzó el límite de activaciones&quot;, libera
+otro equipo con <strong>Quitar licencia</strong> o contacta a soporte.</p>
+</blockquote>
+<hr>
+                    </section>
+
+                    <section id="3-configuracion">
+                        <div class="sec-head"><span class="idx">03</span><h2>Configuración</h2></div>
+<p>Centro de toda la puesta a punto. Cambios aquí afectan a todos los respaldos.</p>
+<h3>Conexión al servidor</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Servidor</strong></td>
+<td>Dirección del servidor de base de datos (nombre o IP, e instancia si aplica).</td>
+</tr>
+<tr>
+<td><strong>Usuario</strong></td>
+<td>Usuario con permisos para leer y respaldar las bases.</td>
+</tr>
+<tr>
+<td><strong>Contraseña</strong></td>
+<td>Contraseña del usuario.</td>
+</tr>
+<tr>
+<td><strong>Probar conexión</strong></td>
+<td>Verifica los datos. <strong>Verde</strong> = correcto; <strong>rojo</strong> = revisa datos o red.</td>
+</tr>
+</tbody></table></div>
+<p>Escribe los datos que te dio tu administrador y presiona <strong>Probar conexión</strong> antes de continuar.</p>
+<h3>Carpetas de respaldo</h3>
+<p>Selecciona las carpetas locales donde se guardan las copias. Si no sabes cuáles usar, deja las
+predeterminadas. Asegúrate de que tengan <strong>espacio suficiente</strong>.</p>
+<hr>
+                    </section>
+
+                    <section id="4-clave-de-cifrado">
+                        <div class="sec-head"><span class="idx">04</span><h2>Clave de cifrado</h2></div>
+<p>Los respaldos se guardan <strong>cifrados</strong>. Sin la clave correcta <strong>no se pueden recuperar</strong>.</p>
+<ul>
+<li>Custodia <strong>genera una clave automáticamente desde el primer arranque</strong>; puedes conservarla, <strong>generar</strong> otra o <strong>escribir la tuya</strong>.</li>
+<li>Usa <strong>Copiar clave</strong> y guárdala en un lugar seguro (como la llave de una caja fuerte).</li>
+<li>Cada respaldo se cifra con la clave <strong>vigente al momento de crearlo</strong>.</li>
+</ul>
+<h3>Historial de claves</h3>
+<p>Si <strong>cambias de clave</strong>, los respaldos anteriores siguen cifrados con la clave anterior. Consulta
+<strong>Historial</strong> para ver las claves previas y poder recuperar respaldos antiguos.</p>
+<blockquote>
+<p><strong>Importante:</strong> si pierdes una clave, los respaldos cifrados con ella <strong>no</strong> se pueden recuperar
+ni regenerar. Guárdala siempre antes de cambiarla.</p>
+</blockquote>
+<hr>
+                    </section>
+
+                    <section id="5-empresas">
+                        <div class="sec-head"><span class="idx">05</span><h2>Empresas</h2></div>
+<p>Lista de todas las empresas/bases de datos encontradas en tu servidor.</p>
+<ul>
+<li>Cada fila muestra <strong>Empresa</strong>, <strong>Base de datos</strong>, <strong>Tipo</strong>, <strong>Relacionadas</strong> (empresas que se respaldan juntas por compartir sus documentos digitales), <strong>Tamaño</strong>, <strong>Ruta de respaldo</strong> y los controles de programación (<strong>Personalizado</strong> y <strong>Automático</strong>).</li>
+<li>Activa el interruptor <strong>Automático</strong> de las empresas que quieras incluir en la programación global, o asígnales un horario <strong>Personalizado</strong> desde su fila. Las que no tengan programación no se respaldan automáticamente.</li>
+<li>Desde la fila también puedes lanzar un <strong>respaldo manual</strong> o <strong>restaurar</strong> un respaldo de esa empresa en cualquier momento.</li>
+<li>Si tienes muchas empresas, empieza por las más importantes.</li>
+<li>Puedes usar <strong>Calcular</strong> (aquí o en Inicio) para estimar el espacio que ocuparán en la nube y
+elegir cuántas copias conservar.</li>
+</ul>
+<hr>
+                    </section>
+
+                    <section id="6-nube-onedrive">
+                        <div class="sec-head"><span class="idx">06</span><h2>Nube (OneDrive)</h2></div>
+<p>Guardar una copia en la nube te protege aunque el equipo falle. Custodia usa <strong>OneDrive</strong>.</p>
+<h3>Conectar</h3>
+<ol>
+<li>En <strong>Configuración</strong>, ve a la sección <strong>Nube</strong>.</li>
+<li>Presiona <strong>Conectar</strong>. Se abre la ventana de inicio de sesión de Microsoft.</li>
+<li>Inicia sesión con la cuenta donde quieres guardar las copias.</li>
+<li>Cuando la cuenta aparezca vinculada, cada respaldo se subirá automáticamente.</li>
+</ol>
+<h3>Controles</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Conectar / Desconectar</strong></td>
+<td>Vincula o desvincula la cuenta de OneDrive.</td>
+</tr>
+<tr>
+<td><strong>Cuenta conectada</strong></td>
+<td>Muestra el correo de la cuenta actualmente vinculada.</td>
+</tr>
+<tr>
+<td><strong>Calcular</strong></td>
+<td>Estima el espacio necesario y las copias a conservar.</td>
+</tr>
+<tr>
+<td><strong>Copias a conservar</strong></td>
+<td>Número de respaldos que se mantienen; los más antiguos se eliminan al superar el límite.</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p>El cálculo de espacio es <strong>aproximado</strong>: cada respaldo se estima en ~50 % del tamaño de la base
+por efecto de la compresión.</p>
+</blockquote>
+<hr>
+                    </section>
+
+                    <section id="7-programacion-de-respaldos">
+                        <div class="sec-head"><span class="idx">07</span><h2>Programación de respaldos</h2></div>
+<p>Define cuándo se ejecutan los respaldos automáticos.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Frecuencia</strong></td>
+<td>Semanal o Mensual.</td>
+</tr>
+<tr>
+<td><strong>Días</strong></td>
+<td>Días de la semana en que se respalda. Usa <strong>&quot;Todos&quot;</strong> para marcarlos de una vez.</td>
+</tr>
+<tr>
+<td><strong>Hora</strong></td>
+<td>Hora de ejecución. Se recomienda una hora sin actividad (p. ej. de madrugada).</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li>Deja el <strong>equipo encendido</strong> a la hora programada.</li>
+<li>El <strong>servicio en segundo plano</strong> debe estar <strong>Activo</strong> (ver §11).</li>
+<li>Puedes lanzar un <strong>respaldo manual</strong> en cualquier momento, sin esperar al horario.</li>
+</ul>
+<hr>
+                    </section>
+
+                    <section id="8-avisos-por-correo">
+                        <div class="sec-head"><span class="idx">08</span><h2>Avisos por correo</h2></div>
+<p>Custodia envía un correo con el resultado de cada respaldo (exitoso o con error).</p>
+<ol>
+<li>En <strong>Configuración</strong>, agrega los <strong>destinatarios</strong> (uno o varios correos).</li>
+<li>Presiona <strong>Correo de prueba</strong> para confirmar que llega.</li>
+<li>Si no llega, revisa que los correos estén bien escritos y la carpeta de <strong>correo no deseado</strong>.</li>
+</ol>
+<hr>
+                    </section>
+
+                    <section id="9-archivos-y-recuperacion">
+                        <div class="sec-head"><span class="idx">09</span><h2>Archivos y recuperación</h2></div>
+<p>La sección <strong>Archivos</strong> lista los respaldos disponibles, tanto <strong>en la nube (OneDrive)</strong> como
+<strong>locales</strong>, ordenados por fecha.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Nombre</strong></td>
+<td>Identificador del respaldo.</td>
+</tr>
+<tr>
+<td><strong>Tamaño</strong></td>
+<td>Espacio que ocupa.</td>
+</tr>
+<tr>
+<td><strong>Modificado</strong></td>
+<td>Fecha y hora de creación.</td>
+</tr>
+</tbody></table></div>
+<h3>Acciones en Archivos</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Descargar</strong></td>
+<td>Descarga los respaldos seleccionados de la nube a la carpeta de respaldos local.</td>
+</tr>
+<tr>
+<td><strong>Subir a la nube</strong></td>
+<td>Sube (o resube) un respaldo local a OneDrive. Útil si la subida automática falló.</td>
+</tr>
+<tr>
+<td><strong>Eliminar</strong></td>
+<td>Elimina los respaldos seleccionados (de la nube o del equipo, según la lista).</td>
+</tr>
+</tbody></table></div>
+<h3>Recuperar un respaldo</h3>
+<p>La restauración se realiza desde la pantalla <strong>Inicio</strong> (o desde la fila de la empresa en
+<strong>Empresas</strong>), no desde Archivos:</p>
+<ol>
+<li>En <strong>Inicio</strong>, dentro de <strong>Acciones rápidas</strong>, presiona <strong>Restaurar</strong>.</li>
+<li>Selecciona el respaldo por su <strong>fecha</strong>. Custodia busca primero en la carpeta local y, si no
+hay copias locales, muestra las de la nube: se <strong>descargan automáticamente</strong> al restaurar (el avance
+se ve en la Bitácora). También puedes usar <strong>Examinar archivo…</strong> para elegir un respaldo guardado
+en otra ubicación.</li>
+<li>Revisa la <strong>información a restaurar</strong> y confirma.</li>
+</ol>
+<blockquote>
+<p><strong>La recuperación necesita la clave de cifrado</strong> con la que se creó ese respaldo. Si usaste una
+clave distinta en su momento, recupérala desde el <strong>Historial de claves</strong> (§4).</p>
+</blockquote>
+<blockquote>
+<p><strong>Advertencia:</strong> restaurar <strong>sobrescribe</strong> datos existentes. Verifica el respaldo y el destino
+antes de confirmar.</p>
+</blockquote>
+<h3>Recuperar instancia completa</h3>
+<p>Para reconstruir un equipo tras una pérdida (o migrar a uno nuevo), el diálogo Restaurar ofrece
+<strong>Recuperar instancia completa</strong>:</p>
+<ol>
+<li>Custodia <strong>descarga de la nube</strong> los respaldos que falten en la carpeta local.</li>
+<li>Restaura primero las <strong>bases de datos generales</strong> (los catálogos de cada sistema).</li>
+<li>Muestra la <strong>lista de empresas encontradas</strong> con su respaldo más reciente; las que no tienen
+respaldo aparecen marcadas con una advertencia.</li>
+<li>Deja <strong>seleccionadas</strong> las empresas que quieras conservar y restaurar. Las que dejes <strong>sin
+seleccionar se eliminan de la lista de empresas de su sistema</strong> (se pide confirmación antes).</li>
+</ol>
+<blockquote>
+<p>Las empresas sin respaldo no se pueden restaurar: si las dejas seleccionadas, solo se conservan
+en la lista de su sistema.</p>
+</blockquote>
+<hr>
+                    </section>
+
+                    <section id="10-bitacora">
+                        <div class="sec-head"><span class="idx">10</span><h2>Bitácora</h2></div>
+<p>Registro de todo lo que Custodia ha hecho. Úsala para confirmar de un vistazo que todo va bien.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Fecha y hora</strong></td>
+<td>Cuándo ocurrió la operación.</td>
+</tr>
+<tr>
+<td><strong>Empresa</strong></td>
+<td>Base de datos afectada.</td>
+</tr>
+<tr>
+<td><strong>Operación</strong></td>
+<td>Respaldo, subida a la nube, recuperación, etc.</td>
+</tr>
+<tr>
+<td><strong>Estado</strong></td>
+<td>Resultado de la operación.</td>
+</tr>
+<tr>
+<td><strong>Mensaje</strong></td>
+<td>Detalle o motivo del error, si lo hubo.</td>
+</tr>
+</tbody></table></div>
+<ul>
+<li><strong>Verde (éxito):</strong> el respaldo se completó sin problemas.</li>
+<li><strong>Rojo (error):</strong> algo falló. Lee el mensaje; si no lo resuelves, contacta a soporte.</li>
+</ul>
+<blockquote>
+<p>Al terminar cualquier operación (respaldo o restauración), Custodia muestra una <strong>notificación
+dentro de la aplicación</strong>, sin importar en qué pantalla estés.</p>
+</blockquote>
+<hr>
+                    </section>
+
+                    <section id="11-servicio-en-segundo-plano">
+                        <div class="sec-head"><span class="idx">11</span><h2>Servicio en segundo plano</h2></div>
+<p>Desde la sección <strong>Más información</strong> controlas el Servicio de Windows que ejecuta los respaldos.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Activo</strong></td>
+<td>El servicio funciona; los respaldos programados se ejecutarán.</td>
+</tr>
+<tr>
+<td><strong>Detenido</strong></td>
+<td>El servicio está parado; <strong>no</strong> habrá respaldos automáticos.</td>
+</tr>
+<tr>
+<td><strong>No instalado</strong></td>
+<td>El servicio no está instalado; contacta a soporte.</td>
+</tr>
+<tr>
+<td><strong>Cambiando de estado…</strong></td>
+<td>Operación en curso; espera a que termine.</td>
+</tr>
+</tbody></table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Botón</th>
+<th>Cuándo está disponible</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Iniciar</strong></td>
+<td>Solo si el servicio está Detenido</td>
+<td>Arranca el servicio.</td>
+</tr>
+<tr>
+<td><strong>Detener</strong></td>
+<td>Solo si el servicio está Activo</td>
+<td>Detiene el servicio.</td>
+</tr>
+<tr>
+<td><strong>Reiniciar</strong></td>
+<td>Solo si el servicio está Activo</td>
+<td>Reinicia el servicio.</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p>Estas acciones requieren permisos de administrador; Windows puede pedir confirmación.</p>
+</blockquote>
+<hr>
+                    </section>
+
+                    <section id="12-estados-y-mensajes">
+                        <div class="sec-head"><span class="idx">12</span><h2>Estados y mensajes</h2></div>
+<h3>Estados de licencia</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Válida / Activa</td>
+<td>La licencia es correcta y vigente.</td>
+</tr>
+<tr>
+<td>Pendiente</td>
+<td>Aún no activada o en proceso.</td>
+</tr>
+<tr>
+<td>Expirada</td>
+<td>Terminó su vigencia.</td>
+</tr>
+<tr>
+<td>Suspendida</td>
+<td>Temporalmente inhabilitada.</td>
+</tr>
+<tr>
+<td>Revocada</td>
+<td>Cancelada por el proveedor.</td>
+</tr>
+<tr>
+<td>No válida</td>
+<td>No corresponde o no se reconoce.</td>
+</tr>
+</tbody></table></div>
+<h3>Motivos de rechazo al validar</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No se encontró la licencia</td>
+<td>Revisa el número de serie.</td>
+</tr>
+<tr>
+<td>La licencia no corresponde a esta aplicación</td>
+<td>Usa la licencia correcta de Custodia.</td>
+</tr>
+<tr>
+<td>La licencia no corresponde a este cliente</td>
+<td>Verifica con tu distribuidor.</td>
+</tr>
+<tr>
+<td>La licencia fue revocada</td>
+<td>Contacta a soporte.</td>
+</tr>
+<tr>
+<td>La licencia está suspendida</td>
+<td>Contacta a soporte.</td>
+</tr>
+<tr>
+<td>La licencia aún no está vigente</td>
+<td>Espera a la fecha de inicio.</td>
+</tr>
+<tr>
+<td>La licencia expiró</td>
+<td>Renueva la licencia.</td>
+</tr>
+<tr>
+<td>Se alcanzó el límite de activaciones</td>
+<td>Libera un equipo con <strong>Quitar licencia</strong> o contacta a soporte.</td>
+</tr>
+<tr>
+<td>Este equipo no tenía una activación registrada</td>
+<td>Ya estaba libre; puedes validarla en otro equipo.</td>
+</tr>
+</tbody></table></div>
+<hr>
+                    </section>
+
+                    <section id="13-solucion-de-problemas">
+                        <div class="sec-head"><span class="idx">13</span><h2>Solución de problemas</h2></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Posible causa / solución</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>&quot;Sin conexión con el servicio&quot;</strong></td>
+<td>El servicio en segundo plano está detenido o no instalado. Ve a §11 e <strong>Iniciar</strong>.</td>
+</tr>
+<tr>
+<td><strong>La prueba de conexión sale en rojo</strong></td>
+<td>Revisa servidor, usuario, contraseña y la red.</td>
+</tr>
+<tr>
+<td><strong>No se ejecutan los respaldos programados</strong></td>
+<td>El equipo estaba apagado a la hora, o el servicio no está Activo.</td>
+</tr>
+<tr>
+<td><strong>No puedo recuperar un respaldo</strong></td>
+<td>Falta la clave de cifrado con la que se creó. Búscala en el Historial de claves.</td>
+</tr>
+<tr>
+<td><strong>No llegan los correos de aviso</strong></td>
+<td>Destinatarios mal escritos o el aviso cayó en correo no deseado. Usa <strong>Correo de prueba</strong>.</td>
+</tr>
+<tr>
+<td><strong>La app está bloqueada</strong></td>
+<td>No hay licencia válida vigente. Valida una licencia en <strong>Más información</strong>.</td>
+</tr>
+<tr>
+<td><strong>&quot;Se alcanzó el límite de activaciones&quot;</strong></td>
+<td>Libera otro equipo con <strong>Quitar licencia</strong>.</td>
+</tr>
+<tr>
+<td><strong>Falla la subida a la nube</strong></td>
+<td>Custodia la reintenta sola varias veces; el respaldo local queda a salvo. Si aun así falla, revisa la conexión y el espacio de OneDrive, y usa <strong>Subir a la nube</strong> en Archivos → Respaldos locales para reintentarla.</td>
+</tr>
+</tbody></table></div>
+<hr>
+                    </section>
+
+                    <section id="14-preguntas-frecuentes">
+                        <div class="sec-head"><span class="idx">14</span><h2>Preguntas frecuentes</h2></div>
+<p><strong>¿Tengo que dejar la aplicación abierta?</strong>
+No. La ventana puede estar cerrada, pero el equipo debe estar <strong>encendido</strong> a la hora programada.</p>
+<p><strong>Perdí mi clave de cifrado, ¿qué hago?</strong>
+La clave es indispensable y no se puede regenerar para copias antiguas. Si aún tienes acceso a
+Custodia, cópiala desde Configuración. Si la perdiste, contacta a tu administrador o a soporte.</p>
+<p><strong>¿Puedo hacer un respaldo ahora mismo, sin esperar al horario?</strong>
+Sí, puedes iniciar un respaldo manual en cualquier momento.</p>
+<p><strong>No me llegan los correos de aviso.</strong>
+Verifica los destinatarios en Configuración, usa <strong>Correo de prueba</strong> y revisa el correo no deseado.</p>
+<p><strong>¿Qué pasa si mi equipo se daña?</strong>
+Si conectaste OneDrive, tienes una copia en la nube. En un equipo nuevo instala Custodia, conecta
+la misma cuenta de OneDrive y usa <strong>Recuperar instancia completa</strong> con tu clave de cifrado: los
+respaldos se descargan y se restauran solos (§9).</p>
+<p><strong>¿Puedo mover mi licencia a otra computadora?</strong>
+Sí. Usa <strong>Quitar licencia</strong> en el equipo actual para liberarla y luego valídala en el nuevo equipo.</p>
+<hr>
+                    </section>
+
+                    <section id="15-glosario">
+                        <div class="sec-head"><span class="idx">15</span><h2>Glosario</h2></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Definición</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Respaldo</strong></td>
+<td>Copia de seguridad de una base de datos.</td>
+</tr>
+<tr>
+<td><strong>Clave de cifrado</strong></td>
+<td>Contraseña que protege los respaldos; necesaria para recuperarlos.</td>
+</tr>
+<tr>
+<td><strong>Activación</strong></td>
+<td>Vínculo entre una licencia y un equipo.</td>
+</tr>
+<tr>
+<td><strong>Vigencia</strong></td>
+<td>Periodo en que la licencia es válida.</td>
+</tr>
+<tr>
+<td><strong>Servicio</strong></td>
+<td>Proceso de Windows que ejecuta los respaldos en segundo plano.</td>
+</tr>
+<tr>
+<td><strong>Bitácora</strong></td>
+<td>Historial de operaciones y sus resultados.</td>
+</tr>
+<tr>
+<td><strong>Nube</strong></td>
+<td>Almacenamiento remoto (OneDrive) de una copia de los respaldos.</td>
+</tr>
+<tr>
+<td><strong>Retención</strong></td>
+<td>Número de copias que se conservan antes de borrar las más antiguas.</td>
+</tr>
+</tbody></table></div>
+<hr>
+<p><em>Custodia by Mercasoft — ¿Necesitas ayuda que no está aquí? Contacta a tu administrador o a
+soporte técnico.</em></p>
+                    </section>
+                </article>
+            </div>
+        </main>
+
+        <footer>
+            <div class="wrap">
+                <div class="brand">
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M16 2.5 27 6v9c0 6.6-4.5 12.4-11 14.5C9.5 27.4 5 21.6 5 15V6l11-3.5Z" fill="url(#mgf1)" />
+                        <rect x="10.5" y="14.5" width="11" height="8.5" rx="2" fill="url(#mgf2)" />
+                        <path d="M12.7 14.5v-1.7a3.3 3.3 0 0 1 6.6 0v1.7" stroke="#fff" stroke-width="1.9" fill="none" stroke-linecap="round" />
+                        <circle cx="16" cy="18.4" r="1.5" fill="#0f1c33" />
+                        <defs>
+                            <linearGradient id="mgf1" x1="27" y1="4" x2="6" y2="28" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#4D7FB2" /><stop offset="1" stop-color="#0B1D59" />
+                            </linearGradient>
+                            <linearGradient id="mgf2" x1="10.5" y1="14.5" x2="20" y2="23" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#82DBD3" /><stop offset="1" stop-color="#2E65B8" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    Custodia
+                </div>
+                <p>by Mercasoft · Manual de referencia</p>
+                <p style="opacity: 0.6">¿Necesitas una guía paso a paso? Consulta la Guía de usuario.</p>
+            </div>
+        </footer>
+    </body>
+</html>
