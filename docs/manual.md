@@ -1,6 +1,6 @@
 # Custodia — Manual de referencia
 
-**Custodia by Mercasoft** · Versión del documento 1.0 · Actualizado el 11 de julio de 2026
+**Custodia by Mercasoft** · Versión del documento 1.1 · Actualizado el 16 de julio de 2026
 
 Este manual de referencia describe **cada pantalla, campo y acción** de Custodia. Está dirigido
 al usuario, pero es más detallado que la guía de usuario: úsalo para consultar el
@@ -42,6 +42,8 @@ Custodia se compone de dos partes que trabajan juntas:
 
 - La **aplicación** se comunica con el **servicio** para validar la licencia, guardar la
   configuración y controlar los respaldos.
+- La aplicación se abre con **permisos de administrador**: Windows muestra el diálogo de
+  confirmación (UAC) al abrirla. Es necesario para administrar los respaldos y el servicio.
 - El **servicio** debe estar **Activo** para que los respaldos automáticos se ejecuten.
 - No es necesario mantener la ventana abierta, **pero el equipo debe estar encendido** a la hora
   programada.
@@ -171,7 +173,7 @@ Guardar una copia en la nube te protege aunque el equipo falle. Custodia usa **O
 | **Conectar / Desconectar** | Vincula o desvincula la cuenta de OneDrive. |
 | **Cuenta conectada** | Muestra el correo de la cuenta actualmente vinculada. |
 | **Calcular** | Estima el espacio necesario y las copias a conservar. |
-| **Copias a conservar** | Número de respaldos que se mantienen; los más antiguos se eliminan al superar el límite. |
+| **Copias a conservar** | Número de respaldos que se mantienen **en la nube**; los más antiguos se eliminan al superar el límite. Se elige en el horario de respaldo (ver §7), junto con las copias a conservar en este equipo. |
 
 > El cálculo de espacio es **aproximado**: cada respaldo se estima en ~50 % del tamaño de la base
 > por efecto de la compresión.
@@ -185,8 +187,11 @@ Define cuándo se ejecutan los respaldos automáticos.
 | Campo | Descripción |
 |---|---|
 | **Frecuencia** | Semanal o Mensual. |
-| **Días** | Días de la semana en que se respalda. Usa **"Todos"** para marcarlos de una vez. |
+| **Días** | Con frecuencia Semanal: días de la semana en que se respalda. Usa **"Todos"** para marcarlos de una vez. |
+| **Día del mes** | Con frecuencia Mensual: día (1-31) en que se respalda. Si el mes no llega a ese día, se usa el último. |
 | **Hora** | Hora de ejecución. Se recomienda una hora sin actividad (p. ej. de madrugada). |
+| **Respaldos a conservar en la nube** | Copias por empresa que se mantienen en OneDrive (1-10); al superar el límite se eliminan las más antiguas. |
+| **Respaldos a conservar en este equipo** | Copias por empresa que se mantienen en las carpetas locales (1-30). Es independiente del número de la nube, para cuando el espacio del disco y el de OneDrive son muy distintos. La limpieza abarca los archivos del respaldo (ZIP, SQL y ADD); los conservados siguen visibles y restaurables desde CONTPAQi, y los respaldos hechos directamente desde CONTPAQi **nunca se tocan**. |
 
 - Deja el **equipo encendido** a la hora programada.
 - El **servicio en segundo plano** debe estar **Activo** (ver §11).
@@ -220,7 +225,7 @@ La sección **Archivos** lista los respaldos disponibles, tanto **en la nube (On
 | Acción | Descripción |
 |---|---|
 | **Descargar** | Descarga los respaldos seleccionados de la nube a la carpeta de respaldos local. |
-| **Subir a la nube** | Sube (o resube) un respaldo local a OneDrive. Útil si la subida automática falló. |
+| **Subir a la nube** | Sube (o resube) un respaldo local a OneDrive. Las subidas que fallan se reintentan solas al volver la conexión; este botón sirve para subir un respaldo al momento o regresar a la nube uno que ya no esté allí. |
 | **Eliminar** | Elimina los respaldos seleccionados (de la nube o del equipo, según la lista). |
 
 ### Recuperar un respaldo
@@ -295,7 +300,8 @@ Desde la sección **Más información** controlas el Servicio de Windows que eje
 | **Detener** | Solo si el servicio está Activo | Detiene el servicio. |
 | **Reiniciar** | Solo si el servicio está Activo | Reinicia el servicio. |
 
-> Estas acciones requieren permisos de administrador; Windows puede pedir confirmación.
+> Custodia se abre con permisos de administrador (Windows pide la confirmación al abrirla), por lo
+> que estas acciones no vuelven a pedir permiso.
 
 ---
 
@@ -339,7 +345,7 @@ Desde la sección **Más información** controlas el Servicio de Windows que eje
 | **No llegan los correos de aviso** | Destinatarios mal escritos o el aviso cayó en correo no deseado. Usa **Correo de prueba**. |
 | **La app está bloqueada** | No hay licencia válida vigente. Valida una licencia en **Más información**. |
 | **"Se alcanzó el límite de activaciones"** | Libera otro equipo con **Quitar licencia**. |
-| **Falla la subida a la nube** | Custodia la reintenta sola varias veces; el respaldo local queda a salvo. Si aun así falla, revisa la conexión y el espacio de OneDrive, y usa **Subir a la nube** en Archivos → Respaldos locales para reintentarla. |
+| **Falla la subida a la nube** | Custodia la reintenta sola varias veces y, si aun así falla, la **resube automáticamente** cuando vuelve la conexión; el respaldo local queda a salvo. Revisa el espacio de OneDrive si persiste, o usa **Subir a la nube** en Archivos → Respaldos locales para subirla al momento. |
 
 ---
 
@@ -379,7 +385,7 @@ Sí. Usa **Quitar licencia** en el equipo actual para liberarla y luego valídal
 | **Servicio** | Proceso de Windows que ejecuta los respaldos en segundo plano. |
 | **Bitácora** | Historial de operaciones y sus resultados. |
 | **Nube** | Almacenamiento remoto (OneDrive) de una copia de los respaldos. |
-| **Retención** | Número de copias que se conservan antes de borrar las más antiguas. |
+| **Retención** | Número de copias que se conservan (en la nube y en este equipo, cada uno con su propio límite) antes de borrar las más antiguas. |
 
 ---
 

@@ -652,7 +652,7 @@
                 <ol class="ledger">
                     <li>
                         <h3>Abre Custodia</h3>
-                        <p>Busca el ícono de Custodia en el escritorio o en el menú de inicio y ábrelo. Verás la pantalla <strong>Inicio</strong> con el menú del lado izquierdo.</p>
+                        <p>Busca el ícono de Custodia en el escritorio o en el menú de inicio y ábrelo. Windows te pedirá confirmación para abrirla con <strong>permisos de administrador</strong>: acepta (Custodia los necesita para administrar los respaldos). Verás la pantalla <strong>Inicio</strong> con el menú del lado izquierdo.</p>
                     </li>
                     <li>
                         <h3>Conecta tu servidor</h3>
@@ -742,7 +742,7 @@
                     <small>Captura mostrando el botón "Conectar / Desconectar" y el nombre de la cuenta ya vinculada.</small>
                 </figure>
 
-                <div class="note"><strong>Tip:</strong> puedes calcular el espacio necesario para los respaldos en la nube con la opción de <strong>Calcular</strong> en el inicio o en la sección de empresas, tambien puedes elegir el número de copias que deseas mantener.</div>
+                <div class="note"><strong>Tip:</strong> puedes calcular el espacio necesario para los respaldos en la nube con la opción de <strong>Calcular</strong> en el inicio o en la sección de empresas; también puedes elegir el número de copias que deseas mantener. Si una subida a la nube falla (por ejemplo, sin internet), no te preocupes: Custodia la <strong>resube automáticamente</strong> cuando vuelve la conexión.</div>
             </div>
         </section>
 
@@ -774,6 +774,11 @@
                         <div class="k">Elige</div>
                         <h3>La hora</h3>
                         <p>Indica a qué hora hacerlo. Se recomienda una hora en que nadie esté usando el sistema, como en la madrugada.</p>
+                    </div>
+                    <div class="card">
+                        <div class="k">Elige</div>
+                        <h3>Las copias a conservar</h3>
+                        <p>En el mismo horario eliges cuántos respaldos conservar <strong>en la nube</strong> y cuántos <strong>en este equipo</strong>; al superar cada límite se eliminan los más antiguos. Puedes usar números distintos si tu disco y tu OneDrive tienen espacios muy diferentes.</p>
                     </div>
                 </div>
 
@@ -849,7 +854,7 @@
 
                 <div class="note"><strong>¿Perdiste el equipo completo?</strong> El diálogo Restaurar también ofrece <strong>Recuperar instancia completa</strong>: descarga de la nube los respaldos que falten, restaura primero las bases generales y después te deja elegir qué empresas recuperar. Las que dejes sin seleccionar se quitan de la lista de empresas de su sistema.</div>
 
-                <div class="note"><strong>¿Y la sección Archivos?</strong> En <strong>Archivos</strong> puedes consultar tus respaldos en la nube y locales, <strong>descargarlos</strong> a tu carpeta de respaldos, <strong>subir a la nube</strong> un respaldo local (útil si una subida falló) o <strong>eliminarlos</strong>. Para restaurar uno, usa <strong>Restaurar</strong> desde Inicio.</div>
+                <div class="note"><strong>¿Y la sección Archivos?</strong> En <strong>Archivos</strong> puedes consultar tus respaldos en la nube y locales, <strong>descargarlos</strong> a tu carpeta de respaldos, <strong>subir a la nube</strong> un respaldo local o <strong>eliminarlos</strong>. Las subidas que fallan se reintentan solas al volver la conexión; el botón sirve para subir un respaldo al momento o regresar a la nube uno que ya no esté allí. Para restaurar uno, usa <strong>Restaurar</strong> desde Inicio.</div>
             </div>
         </section>
 

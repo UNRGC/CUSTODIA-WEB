@@ -280,8 +280,8 @@ footer p { font-size: 0.85rem; margin-top: 8px; }
                     Para una introducción paso a paso, revisa la <a href="../index.html" style="color:#9fe6d8">Guía de usuario</a>.
                 </p>
                 <div class="meta">
-                    <span class="pill">Versión del documento 1.0</span>
-                    <span class="pill">Actualizado el 11 de julio de 2026</span>
+                    <span class="pill">Versión del documento 1.1</span>
+                    <span class="pill">Actualizado el 16 de julio de 2026</span>
                 </div>
             </div>
         </div>
@@ -333,6 +333,8 @@ footer p { font-size: 0.85rem; margin-top: 8px; }
 <ul>
 <li>La <strong>aplicación</strong> se comunica con el <strong>servicio</strong> para validar la licencia, guardar la
 configuración y controlar los respaldos.</li>
+<li>La aplicación se abre con <strong>permisos de administrador</strong>: Windows muestra el diálogo de
+confirmación (UAC) al abrirla. Es necesario para administrar los respaldos y el servicio.</li>
 <li>El <strong>servicio</strong> debe estar <strong>Activo</strong> para que los respaldos automáticos se ejecuten.</li>
 <li>No es necesario mantener la ventana abierta, <strong>pero el equipo debe estar encendido</strong> a la hora
 programada.</li>
@@ -503,7 +505,7 @@ elegir cuántas copias conservar.</li>
 </tr>
 <tr>
 <td><strong>Copias a conservar</strong></td>
-<td>Número de respaldos que se mantienen; los más antiguos se eliminan al superar el límite.</td>
+<td>Número de respaldos que se mantienen <strong>en la nube</strong>; los más antiguos se eliminan al superar el límite. Se elige en el horario de respaldo (ver §7), junto con las copias a conservar en este equipo.</td>
 </tr>
 </tbody></table></div>
 <blockquote>
@@ -529,11 +531,23 @@ por efecto de la compresión.</p>
 </tr>
 <tr>
 <td><strong>Días</strong></td>
-<td>Días de la semana en que se respalda. Usa <strong>&quot;Todos&quot;</strong> para marcarlos de una vez.</td>
+<td>Con frecuencia Semanal: días de la semana en que se respalda. Usa <strong>&quot;Todos&quot;</strong> para marcarlos de una vez.</td>
+</tr>
+<tr>
+<td><strong>Día del mes</strong></td>
+<td>Con frecuencia Mensual: día (1-31) en que se respalda. Si el mes no llega a ese día, se usa el último.</td>
 </tr>
 <tr>
 <td><strong>Hora</strong></td>
 <td>Hora de ejecución. Se recomienda una hora sin actividad (p. ej. de madrugada).</td>
+</tr>
+<tr>
+<td><strong>Respaldos a conservar en la nube</strong></td>
+<td>Copias por empresa que se mantienen en OneDrive (1-10); al superar el límite se eliminan las más antiguas.</td>
+</tr>
+<tr>
+<td><strong>Respaldos a conservar en este equipo</strong></td>
+<td>Copias por empresa que se mantienen en las carpetas locales (1-30). Es independiente del número de la nube, para cuando el espacio del disco y el de OneDrive son muy distintos. La limpieza abarca los archivos del respaldo (ZIP, SQL y ADD); los conservados siguen visibles y restaurables desde CONTPAQi, y los respaldos hechos directamente desde CONTPAQi <strong>nunca se tocan</strong>.</td>
 </tr>
 </tbody></table></div>
 <ul>
@@ -593,7 +607,7 @@ por efecto de la compresión.</p>
 </tr>
 <tr>
 <td><strong>Subir a la nube</strong></td>
-<td>Sube (o resube) un respaldo local a OneDrive. Útil si la subida automática falló.</td>
+<td>Sube (o resube) un respaldo local a OneDrive. Las subidas que fallan se reintentan solas al volver la conexión; este botón sirve para subir un respaldo al momento o regresar a la nube uno que ya no esté allí.</td>
 </tr>
 <tr>
 <td><strong>Eliminar</strong></td>
@@ -731,7 +745,8 @@ dentro de la aplicación</strong>, sin importar en qué pantalla estés.</p>
 </tr>
 </tbody></table></div>
 <blockquote>
-<p>Estas acciones requieren permisos de administrador; Windows puede pedir confirmación.</p>
+<p>Custodia se abre con permisos de administrador (Windows pide la confirmación al abrirla), por lo
+que estas acciones no vuelven a pedir permiso.</p>
 </blockquote>
 <hr>
                     </section>
@@ -858,7 +873,7 @@ dentro de la aplicación</strong>, sin importar en qué pantalla estés.</p>
 </tr>
 <tr>
 <td><strong>Falla la subida a la nube</strong></td>
-<td>Custodia la reintenta sola varias veces; el respaldo local queda a salvo. Si aun así falla, revisa la conexión y el espacio de OneDrive, y usa <strong>Subir a la nube</strong> en Archivos → Respaldos locales para reintentarla.</td>
+<td>Custodia la reintenta sola varias veces y, si aun así falla, la <strong>resube automáticamente</strong> cuando vuelve la conexión; el respaldo local queda a salvo. Revisa el espacio de OneDrive si persiste, o usa <strong>Subir a la nube</strong> en Archivos → Respaldos locales para subirla al momento.</td>
 </tr>
 </tbody></table></div>
 <hr>
@@ -923,7 +938,7 @@ Sí. Usa <strong>Quitar licencia</strong> en el equipo actual para liberarla y l
 </tr>
 <tr>
 <td><strong>Retención</strong></td>
-<td>Número de copias que se conservan antes de borrar las más antiguas.</td>
+<td>Número de copias que se conservan (en la nube y en este equipo, cada uno con su propio límite) antes de borrar las más antiguas.</td>
 </tr>
 </tbody></table></div>
 <hr>
