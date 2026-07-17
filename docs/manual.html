@@ -280,8 +280,9 @@ footer p { font-size: 0.85rem; margin-top: 8px; }
                     Para una introducción paso a paso, revisa la <a href="../index.html" style="color:#9fe6d8">Guía de usuario</a>.
                 </p>
                 <div class="meta">
-                    <span class="pill">Versión del documento 1.1</span>
-                    <span class="pill">Actualizado el 16 de julio de 2026</span>
+                    <span class="pill">Para Custodia 1.4</span>
+                    <span class="pill">Versión del documento 1.2</span>
+                    <span class="pill">Actualizado el 17 de julio de 2026</span>
                 </div>
             </div>
         </div>
@@ -390,6 +391,13 @@ de la aplicación permanece bloqueado.</p>
 <td>Estado actual: Válida, Activa, Revocada, Expirada, Suspendida, etc.</td>
 </tr>
 </tbody></table></div>
+<h3>Aviso de vencimiento</h3>
+<p>Al abrir Custodia, una notificación avisa si a la licencia le quedan <strong>30 días o menos</strong>:</p>
+<ul>
+<li>De 16 a 30 días muestra un aviso informativo.</li>
+<li>De 8 a 15 días muestra una advertencia.</li>
+<li>En los últimos 7 días muestra un aviso urgente e indica si vence <strong>hoy</strong> o <strong>mañana</strong>.</li>
+</ul>
 <h3>Quitar licencia</h3>
 <p>Usa <strong>Quitar licencia</strong> para <strong>liberar la activación de este equipo</strong> y poder usar la licencia en
 otra computadora.</p>
@@ -550,10 +558,15 @@ por efecto de la compresión.</p>
 <td>Copias por empresa que se mantienen en las carpetas locales (1-30). Es independiente del número de la nube, para cuando el espacio del disco y el de OneDrive son muy distintos. La limpieza abarca los archivos del respaldo (ZIP, SQL y ADD); los conservados siguen visibles y restaurables desde CONTPAQi, y los respaldos hechos directamente desde CONTPAQi <strong>nunca se tocan</strong>.</td>
 </tr>
 </tbody></table></div>
+<blockquote>
+<p>Al presionar <strong>Guardar</strong>, la programación se aplica inmediatamente y el próximo respaldo aparece
+en <strong>Inicio</strong>. Si no se puede guardar, Custodia muestra el error y conserva la configuración anterior.</p>
+</blockquote>
 <ul>
 <li>Deja el <strong>equipo encendido</strong> a la hora programada.</li>
 <li>El <strong>servicio en segundo plano</strong> debe estar <strong>Activo</strong> (ver §11).</li>
-<li>Puedes lanzar un <strong>respaldo manual</strong> en cualquier momento, sin esperar al horario.</li>
+<li>Puedes lanzar un <strong>respaldo manual</strong> en cualquier momento, sin esperar al horario. Si ya hay otro
+respaldo en curso, Custodia no inicia uno simultáneo y te pide esperar a que termine.</li>
 </ul>
 <hr>
                     </section>
@@ -639,14 +652,16 @@ antes de confirmar.</p>
 <ol>
 <li>Custodia <strong>descarga de la nube</strong> los respaldos que falten en la carpeta local.</li>
 <li>Restaura primero las <strong>bases de datos generales</strong> (los catálogos de cada sistema).</li>
-<li>Muestra la <strong>lista de empresas encontradas</strong> con su respaldo más reciente; las que no tienen
-respaldo aparecen marcadas con una advertencia.</li>
+<li>Muestra la <strong>lista de empresas encontradas</strong>, incluidas las de <strong>Factura Electrónica</strong>, con su
+respaldo más reciente; las que no tienen respaldo aparecen marcadas con una advertencia.</li>
 <li>Deja <strong>seleccionadas</strong> las empresas que quieras conservar y restaurar. Las que dejes <strong>sin
 seleccionar se eliminan de la lista de empresas de su sistema</strong> (se pide confirmación antes).</li>
+<li>Antes de modificar las listas, Custodia valida todos los respaldos seleccionados. Si falta alguno,
+está dañado o no contiene toda la información necesaria, cancela la operación y conserva las listas.</li>
 </ol>
 <blockquote>
 <p>Las empresas sin respaldo no se pueden restaurar: si las dejas seleccionadas, solo se conservan
-en la lista de su sistema.</p>
+en la lista de su sistema. Esto también aplica a las empresas de Factura Electrónica.</p>
 </blockquote>
 <hr>
                     </section>
@@ -887,7 +902,8 @@ No. La ventana puede estar cerrada, pero el equipo debe estar <strong>encendido<
 La clave es indispensable y no se puede regenerar para copias antiguas. Si aún tienes acceso a
 Custodia, cópiala desde Configuración. Si la perdiste, contacta a tu administrador o a soporte.</p>
 <p><strong>¿Puedo hacer un respaldo ahora mismo, sin esperar al horario?</strong>
-Sí, puedes iniciar un respaldo manual en cualquier momento.</p>
+Sí, puedes iniciar un respaldo manual en cualquier momento. Si ya hay otro respaldo en curso,
+Custodia evita iniciar uno simultáneo y te pide esperar a que termine.</p>
 <p><strong>No me llegan los correos de aviso.</strong>
 Verifica los destinatarios en Configuración, usa <strong>Correo de prueba</strong> y revisa el correo no deseado.</p>
 <p><strong>¿Qué pasa si mi equipo se daña?</strong>
@@ -968,7 +984,7 @@ soporte técnico.</em></p>
                     </svg>
                     Custodia
                 </div>
-                <p>by Mercasoft · Manual de referencia</p>
+                <p>by Mercasoft · Manual de referencia · Custodia 1.4</p>
                 <p style="opacity: 0.6">¿Necesitas una guía paso a paso? Consulta la Guía de usuario.</p>
             </div>
         </footer>

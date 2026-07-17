@@ -1,6 +1,6 @@
 # Custodia — Manual de referencia
 
-**Custodia by Mercasoft** · Versión del documento 1.1 · Actualizado el 16 de julio de 2026
+**Custodia by Mercasoft** · Para Custodia 1.4 · Versión del documento 1.2 · Actualizado el 17 de julio de 2026
 
 Este manual de referencia describe **cada pantalla, campo y acción** de Custodia. Está dirigido
 al usuario, pero es más detallado que la guía de usuario: úsalo para consultar el
@@ -80,6 +80,14 @@ de la aplicación permanece bloqueado.
 | **Propietario** | Nombre a quien está registrada la licencia. |
 | **Vigencia** | Rango de fechas en que la licencia es válida (Desde / Hasta). |
 | **Estado** | Estado actual: Válida, Activa, Revocada, Expirada, Suspendida, etc. |
+
+### Aviso de vencimiento
+
+Al abrir Custodia, una notificación avisa si a la licencia le quedan **30 días o menos**:
+
+- De 16 a 30 días muestra un aviso informativo.
+- De 8 a 15 días muestra una advertencia.
+- En los últimos 7 días muestra un aviso urgente e indica si vence **hoy** o **mañana**.
 
 ### Quitar licencia
 
@@ -193,9 +201,13 @@ Define cuándo se ejecutan los respaldos automáticos.
 | **Respaldos a conservar en la nube** | Copias por empresa que se mantienen en OneDrive (1-10); al superar el límite se eliminan las más antiguas. |
 | **Respaldos a conservar en este equipo** | Copias por empresa que se mantienen en las carpetas locales (1-30). Es independiente del número de la nube, para cuando el espacio del disco y el de OneDrive son muy distintos. La limpieza abarca los archivos del respaldo (ZIP, SQL y ADD); los conservados siguen visibles y restaurables desde CONTPAQi, y los respaldos hechos directamente desde CONTPAQi **nunca se tocan**. |
 
+> Al presionar **Guardar**, la programación se aplica inmediatamente y el próximo respaldo aparece
+> en **Inicio**. Si no se puede guardar, Custodia muestra el error y conserva la configuración anterior.
+
 - Deja el **equipo encendido** a la hora programada.
 - El **servicio en segundo plano** debe estar **Activo** (ver §11).
-- Puedes lanzar un **respaldo manual** en cualquier momento, sin esperar al horario.
+- Puedes lanzar un **respaldo manual** en cualquier momento, sin esperar al horario. Si ya hay otro
+  respaldo en curso, Custodia no inicia uno simultáneo y te pide esperar a que termine.
 
 ---
 
@@ -253,13 +265,15 @@ Para reconstruir un equipo tras una pérdida (o migrar a uno nuevo), el diálogo
 
 1. Custodia **descarga de la nube** los respaldos que falten en la carpeta local.
 2. Restaura primero las **bases de datos generales** (los catálogos de cada sistema).
-3. Muestra la **lista de empresas encontradas** con su respaldo más reciente; las que no tienen
-   respaldo aparecen marcadas con una advertencia.
+3. Muestra la **lista de empresas encontradas**, incluidas las de **Factura Electrónica**, con su
+   respaldo más reciente; las que no tienen respaldo aparecen marcadas con una advertencia.
 4. Deja **seleccionadas** las empresas que quieras conservar y restaurar. Las que dejes **sin
    seleccionar se eliminan de la lista de empresas de su sistema** (se pide confirmación antes).
+5. Antes de modificar las listas, Custodia valida todos los respaldos seleccionados. Si falta alguno,
+   está dañado o no contiene toda la información necesaria, cancela la operación y conserva las listas.
 
 > Las empresas sin respaldo no se pueden restaurar: si las dejas seleccionadas, solo se conservan
-> en la lista de su sistema.
+> en la lista de su sistema. Esto también aplica a las empresas de Factura Electrónica.
 
 ---
 
@@ -359,7 +373,8 @@ La clave es indispensable y no se puede regenerar para copias antiguas. Si aún 
 Custodia, cópiala desde Configuración. Si la perdiste, contacta a tu administrador o a soporte.
 
 **¿Puedo hacer un respaldo ahora mismo, sin esperar al horario?**
-Sí, puedes iniciar un respaldo manual en cualquier momento.
+Sí, puedes iniciar un respaldo manual en cualquier momento. Si ya hay otro respaldo en curso,
+Custodia evita iniciar uno simultáneo y te pide esperar a que termine.
 
 **No me llegan los correos de aviso.**
 Verifica los destinatarios en Configuración, usa **Correo de prueba** y revisa el correo no deseado.
