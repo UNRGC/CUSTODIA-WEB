@@ -280,9 +280,9 @@ footer p { font-size: 0.85rem; margin-top: 8px; }
                     Para una introducción paso a paso, revisa la <a href="../index.html" style="color:#9fe6d8">Guía de usuario</a>.
                 </p>
                 <div class="meta">
-                    <span class="pill">Para Custodia 1.4</span>
-                    <span class="pill">Versión del documento 1.2</span>
-                    <span class="pill">Actualizado el 17 de julio de 2026</span>
+                    <span class="pill">Para Custodia 1.5</span>
+                    <span class="pill">Versión del documento 1.3</span>
+                    <span class="pill">Actualizado el 20 de julio de 2026</span>
                 </div>
             </div>
         </div>
@@ -573,12 +573,50 @@ respaldo en curso, Custodia no inicia uno simultáneo y te pide esperar a que te
 
                     <section id="8-avisos-por-correo">
                         <div class="sec-head"><span class="idx">08</span><h2>Avisos por correo</h2></div>
-<p>Custodia envía un correo con el resultado de cada respaldo (exitoso o con error).</p>
+<p>Al terminar un ciclo de respaldos automáticos, Custodia envía <strong>un solo correo combinado</strong>
+con el resultado de todos: si varias empresas se respaldan en el mismo horario, llega un único reporte,
+no un correo por cada una.</p>
 <ol>
 <li>En <strong>Configuración</strong>, agrega los <strong>destinatarios</strong> (uno o varios correos).</li>
 <li>Presiona <strong>Correo de prueba</strong> para confirmar que llega.</li>
 <li>Si no llega, revisa que los correos estén bien escritos y la carpeta de <strong>correo no deseado</strong>.</li>
 </ol>
+<p><strong>Qué se notifica</strong> se elige en el <strong>horario</strong> de respaldo (el global o el
+personalizado de cada empresa, ver §7): un interruptor general de avisos por correo y los eventos a
+incluir — exitosos, errores y advertencias.</p>
+<p>El reporte se divide en secciones; solo aparecen las que tienen algo que mostrar:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sección</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Respaldos exitosos</strong></td>
+<td>Se generaron correctamente y, con la nube conectada, ya tienen su copia en OneDrive.</td>
+</tr>
+<tr>
+<td><strong>Completados sin subir a la nube</strong></td>
+<td>El respaldo se generó, pero su subida a OneDrive no se completó: aún no tiene copia fuera del
+equipo. Custodia la <strong>resube automáticamente</strong> (reintenta cada 30 minutos); también puedes
+subirla al momento desde <strong>Archivos → Respaldos locales</strong>.</td>
+</tr>
+<tr>
+<td><strong>Errores y fallos</strong></td>
+<td>Respaldos que no se completaron, con su motivo. El detalle completo queda en la Bitácora.</td>
+</tr>
+<tr>
+<td><strong>Advertencia de almacenamiento</strong></td>
+<td>El disco local de respaldos o el espacio de OneDrive superó el <strong>90&nbsp;%</strong> de uso.
+Para no saturar el buzón, se incluye como máximo una vez cada 24 horas.</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p><strong>Varios servidores, un buzón:</strong> el asunto identifica al equipo que envía el reporte
+("Custodia · EQUIPO — Reporte de respaldos: …"). Sirve para distinguir los correos de cada servidor y
+crear filtros en tu bandeja.</p>
+</blockquote>
 <hr>
                     </section>
 
@@ -868,7 +906,8 @@ que estas acciones no vuelven a pedir permiso.</p>
 </tr>
 <tr>
 <td><strong>No se ejecutan los respaldos programados</strong></td>
-<td>El equipo estaba apagado a la hora, o el servicio no está Activo.</td>
+<td>El servicio no está Activo (ver §11), o el equipo estaba apagado a la hora. Si estaba apagado, al
+encenderlo Custodia <strong>recupera automáticamente</strong> el respaldo pendiente de las últimas 24 horas.</td>
 </tr>
 <tr>
 <td><strong>No puedo recuperar un respaldo</strong></td>
@@ -897,7 +936,9 @@ que estas acciones no vuelven a pedir permiso.</p>
                     <section id="14-preguntas-frecuentes">
                         <div class="sec-head"><span class="idx">14</span><h2>Preguntas frecuentes</h2></div>
 <p><strong>¿Tengo que dejar la aplicación abierta?</strong>
-No. La ventana puede estar cerrada, pero el equipo debe estar <strong>encendido</strong> a la hora programada.</p>
+No. La ventana puede estar cerrada, pero el equipo debe estar <strong>encendido</strong> a la hora
+programada. Si estaba apagado, al encenderlo se recupera automáticamente el respaldo pendiente
+(hasta 24 horas después de la hora original).</p>
 <p><strong>Perdí mi clave de cifrado, ¿qué hago?</strong>
 La clave es indispensable y no se puede regenerar para copias antiguas. Si aún tienes acceso a
 Custodia, cópiala desde Configuración. Si la perdiste, contacta a tu administrador o a soporte.</p>
@@ -984,7 +1025,7 @@ soporte técnico.</em></p>
                     </svg>
                     Custodia
                 </div>
-                <p>by Mercasoft · Manual de referencia · Custodia 1.4</p>
+                <p>by Mercasoft · Manual de referencia · Custodia 1.5</p>
                 <p style="opacity: 0.6">¿Necesitas una guía paso a paso? Consulta la Guía de usuario.</p>
             </div>
         </footer>
